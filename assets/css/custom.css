@@ -1,0 +1,43 @@
+/* ===== Layout adjustments ===== */
+
+/* メインのコンテンツエリアの横幅を広げる */
+section {
+  max-width: 900px;     /* デフォルトは約650px */
+  margin-left: 260px;   /* サイドバーとの間隔 */
+  padding: 40px 40px;
+}
+
+/* ===== Typography adjustments ===== */
+
+/* 本文のフォントサイズ・行間 */
+body {
+  font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #222;
+}
+
+/* 見出しを少し大きく・余白広めに */
+h1, h2, h3 {
+  font-weight: 600;
+  color: #222;
+  margin-top: 1.4em;
+}
+
+/* ===== Link style ===== */
+a {
+  color: #007acc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Optional: サイドバーの文字を少し控えめに ===== */
+header h1 {
+  font-size: 20px;
+}
+header p {
+  font-size: 14px;
+  color: #666;
+}
