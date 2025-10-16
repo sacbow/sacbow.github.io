@@ -1,3 +1,11 @@
+---
+layout: page
+title: ""
+author_profile: true
+sidebar:
+  nav: "sidebar"
+---
+
 # Welcome
 
 I am a PhD candidate at the University of Tokyo, working on computational imaging, Bayesian inference, and software engineering.
