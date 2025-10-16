@@ -3,13 +3,14 @@ description: "Ph.D. candidate at the University of Tokyo"
 theme: jekyll-theme-leap-day
 show_downloads: false
 
-include:
-  - assets/css/custom.css
-
-
 # Optional metadata
 email: nd@hajimeueda@gmail.com
 github_username: sacbow
 
-plugins:
-  - jekyll-include-cache
+# カスタムヘッダーを読み込む設定
+defaults:
+  - scope:
+      path: ""
+    values:
+      include:
+        head: custom-head.html
