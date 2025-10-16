@@ -55,3 +55,21 @@ plugins:
 # ===============================
 head:
   include: custom-head.html
+
+
+# ===============================
+# Navigation (for leap-day sidebar)
+# ===============================
+# 表示したいページの順序とタイトルを指定
+# ファイル名（または相対パス）を key に、表示名を value に書きます。
+nav:
+  - title: "Home"
+    url: "/"
+  - title: "About"
+    url: "/about.html"
+  - title: "Research"
+    url: "/research.html"
+  - title: "Publications"
+    url: "/publications.html"
+  - title: "Blog"
+    url: "/blog/"
