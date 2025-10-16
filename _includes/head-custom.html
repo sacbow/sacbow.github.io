@@ -1,2 +1,10 @@
-<!-- _includes/custom-head.html -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<script>
+  fetch('{{ '/_includes/nav.html' | relative_url }}')
+    .then(response => response.text())
+    .then(html => {
+      const nav = document.querySelector('nav');
+      if (nav) nav.innerHTML = html;
+    });
+</script>
+

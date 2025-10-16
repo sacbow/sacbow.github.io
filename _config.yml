@@ -1,61 +1,23 @@
-# ===============================
-# Site settings
-# ===============================
 title: "Hajime Ueda"
 description: "Ph.D. candidate at the University of Tokyo"
 theme: jekyll-theme-leap-day
 show_downloads: false
 
-# ===============================
-# Author metadata (optional)
-# ===============================
 email: hajimeueda@gmail.com
 github_username: sacbow
 
-# ===============================
-# Build settings
-# ===============================
-
-# Jekyll でビルド対象に含めるファイル・フォルダ
 include:
   - assets/css/custom.css
   - _includes/head-custom.html
   - _includes/nav.html
 
-# Markdownとハイライトの設定（お好みで）
 markdown: kramdown
 kramdown:
   input: GFM
   math_engine: mathjax
 
-# ===============================
-# Custom includes and defaults
-# ===============================
-# 全ページの <head> に head-custom.html を挿入
-defaults:
-  - scope:
-      path: ""
-    values:
-      include:
-        head: head-custom.html
-        nav: nav.html
-
-# ===============================
-# Optional: Site URL（必要に応じて）
-# ===============================
 url: "https://sacbow.github.io"
 baseurl: ""
 
-# ===============================
-# Plugins（GitHub Pages対応）
-# ===============================
 plugins:
   - jekyll-include-cache
-
-# ===============================
-# Inject custom includes into theme
-# ===============================
-head:
-  include: head-custom.html
-nav:
-  include: nav.html
