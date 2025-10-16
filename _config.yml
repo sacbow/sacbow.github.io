@@ -10,3 +10,6 @@ include:
 # Optional metadata
 email: nd@hajimeueda@gmail.com
 github_username: sacbow
+
+plugins:
+  - jekyll-include-cache
