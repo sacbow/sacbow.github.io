@@ -1,6 +1,6 @@
 ---
 title: "Welcome"
-layout: page
+layout: pages
 ---
 
 I am a PhD candidate at the University of Tokyo, working on computational imaging, Bayesian inference, and software engineering.
