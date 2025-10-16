@@ -49,3 +49,9 @@ baseurl: ""
 # ===============================
 plugins:
   - jekyll-include-cache
+
+# ===============================
+# Inject custom-head into the theme head
+# ===============================
+head:
+  include: custom-head.html
