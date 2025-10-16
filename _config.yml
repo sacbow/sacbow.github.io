@@ -19,7 +19,8 @@ github_username: sacbow
 # Jekyll でビルド対象に含めるファイル・フォルダ
 include:
   - assets/css/custom.css
-  - _includes/custom-head.html
+  - _includes/head-custom.html
+  - _includes/nav.html
 
 # Markdownとハイライトの設定（お好みで）
 markdown: kramdown
@@ -30,13 +31,14 @@ kramdown:
 # ===============================
 # Custom includes and defaults
 # ===============================
-# 全ページの <head> に custom-head.html を挿入
+# 全ページの <head> に head-custom.html を挿入
 defaults:
   - scope:
       path: ""
     values:
       include:
-        head: custom-head.html
+        head: head-custom.html
+        nav: nav.html
 
 # ===============================
 # Optional: Site URL（必要に応じて）
@@ -51,25 +53,9 @@ plugins:
   - jekyll-include-cache
 
 # ===============================
-# Inject custom-head into the theme head
+# Inject custom includes into theme
 # ===============================
 head:
-  include: custom-head.html
-
-
-# ===============================
-# Navigation (for leap-day sidebar)
-# ===============================
-# 表示したいページの順序とタイトルを指定
-# ファイル名（または相対パス）を key に、表示名を value に書きます。
+  include: head-custom.html
 nav:
-  - title: "Home"
-    url: "/"
-  - title: "About"
-    url: "/about.html"
-  - title: "Research"
-    url: "/research.html"
-  - title: "Publications"
-    url: "/publications.html"
-  - title: "Blog"
-    url: "/blog/"
+  include: nav.html
