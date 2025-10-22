@@ -4,6 +4,9 @@
 main:
   - title: "Publications"
     url: /publications/
+  
+  - title: "Softwares"
+    url: /softwares/
 
   - title: "Cookings"
     url: /cookings/
