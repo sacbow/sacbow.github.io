@@ -1,6 +1,7 @@
 ---
 title: "A Message-Passing Perspective on Ptychographic Phase Retrieval"
 collection: publications
+category: manuscripts
 permalink: /publication/2025-ptychoep
 date: 2025-10-01
 venue: "IEEE Transactions on Computational Imaging"
