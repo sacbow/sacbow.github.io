@@ -33,7 +33,7 @@ author:
   email            : "nd.hajimeueda@gmail.com" 
 
   # Academic websites
-  orcid            : "0000-0001-8083-5347"
+  orcid            : "https://orcid.org/my-orcid?orcid=0000-0001-8083-5347"
 
   # Repositories and software development
   github           : "sacbow"  
