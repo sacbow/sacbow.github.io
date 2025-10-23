@@ -12,10 +12,10 @@ Graduate School of Frontier Sciences
 
 ## 🧑‍🎓 Education
 
-- **Ph.D. Program**, the University of Tokyo (Apr. 2024 – Present)
+- **Ph.D. Program**, The University of Tokyo (Apr. 2024 – Present)
 Department of Complexity Science and Engineering, Graduate School of Frontier Sciences
 
-- **M.S.**, the University of Tokyo (Apr. 2022 – Mar. 2024)
+- **M.S.**, The University of Tokyo (Apr. 2022 – Mar. 2024)
 Department of Complexity Science and Engineering, Graduate School of Frontier Sciences
 
 - **B.Eng. in Applied Physics**, The University of Tokyo (Apr. 2018 – Mar. 2022)
