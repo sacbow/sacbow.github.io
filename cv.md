@@ -5,8 +5,6 @@ permalink: /cv/
 author_profile: true
 ---
 
-# Hajime Ueda
-
 **Ph.D. Candidate, The University of Tokyo**  
 Graduate School of Frontier Sciences
 
