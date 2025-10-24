@@ -111,10 +111,8 @@ social:
 
 
 # Analytics
-analytics:
-  provider               :  "google" # false (default), "google", "google-universal", "google-analytics-4", "custom"
-  google:
-    tracking_id          : G-LS3KVES5X6
+google_analytics: G-LS3KVES5X6
+
 
 
 # Reading Files
