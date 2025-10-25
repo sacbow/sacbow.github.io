@@ -16,7 +16,7 @@ My research interests include:
 
 ---
 
-Outside of research, I have also contributed to **The University of Tokyo Newspaper (東京大学新聞社)**,  
+Outside of research, I have also contributed to **The University of Tokyo Newspaper (東京大学新聞社)**,
 a student-run newspaper operated by a public-interest foundation.  
 I have written several articles on science, technology, and student life in UT.
 
