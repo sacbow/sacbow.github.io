@@ -180,7 +180,7 @@ kramdown:
 collections:
   publications:
     output: true
-  softwares:
+  software:
     output: true
   cookings:
     output: true
