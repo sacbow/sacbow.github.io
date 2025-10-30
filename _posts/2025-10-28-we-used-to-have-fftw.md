@@ -36,6 +36,23 @@ This means that, if you already have the DFTs of the two halves $$\{x_{2j'}\}_{j
 This decomposition is known as the **Cooley–Tukey algorithm** [^cooleytukey]. Even for prime $$N$$, the DFT of $$x \in \mathbb{C}^N$$ can be reduced to DFTs with some factorizable length $$N'$$ by **Rader’s algorithm** [^rader] or **Bluestein’s algorithm** [^bluestein].
 Common FFT libraries combine these approaches and dispatch optimal FFT code depending on the shape of input data. For example, the [PocketFFT library](https://github.com/mreineck/pocketfft) — used in both [`numpy.fft`](https://numpy.org/doc/stable/reference/routines.fft.html#module-numpy.fft) and [`scipy.fft`](https://docs.scipy.org/doc/scipy/tutorial/fft.html) — implements the Cooley–Tukey algorithm for composite lengths with small factors (e.g., $$r = 2, 3, 5, 7, 11$$), and switches to **Bluestein’s algorithm** for large prime factors.
 
+## 2. High Performance FFT
+
+The optimal FFT algorithm depends not only on the shape of the data, but also on the machine that executes it. This idea forms the foundation of the well-known [**FFTW**](https://www.fftw.org/) library, which achieves performance comparable to vendor-tuned implementations such as Intel’s [MKL FFT](https://www.intel.com/content/www/us/en/docs/onemkl/developer-reference-c/2023-2/fft-functions.html), by adaptively searching for the best algorithm on any given computing environment. Although this article cannot cover all of FFTW’s technical aspects, this chapter aims to provide a concise explanation of how FFT performance is tied to hardware characteristics.
+
+---
+
+### Hierarchical Memory
+
+When analyzing the performance of computational algorithms, it is often found that a significant portion of execution time is spent transferring data between the processor and the main memory, rather than performing arithmetic itself. A fundamental approach to this problem is the **hierarchical memory system**. If a program repeatedly accesses the same data, that data should be kept close to the processor — in the **cache**, a small but extremely fast memory. This hierarchy, typically consisting of several levels (L1, L2, L3), is designed to bridge the enormous speed gap between the CPU and the main memory.
+
+Although caching remains an essential technique for programmers today, its *relative* importance has changed since the era of FFTW. The reasons are:
+
+- The performance of hierarchical memory has drastically improved — both in cache capacity and memory bandwidth.  
+- Parallel computing (such as GPUs) has become the dominant factor in high-performance computing.
+
+The optimization strategy in FFTW can be summarized, in a nutshell, as an effort to **maximize cache efficiency**. While today’s computing environments differ greatly from the architectures for which FFTW was originally optimized, there is still much to learn from its underlying philosophy.
+
 
 
 ---
