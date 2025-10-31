@@ -62,7 +62,7 @@ There are two natural ways to traverse this tree:
 - **Breadth-first approach**: compute all DFTs at the same level before proceeding to the next.  
 - **Depth-first approach**: recursively compute a full branch of the tree before moving to another.
 
-![Cooley–Tukey traversal order](/images/CTtree.jpg)
+![Cooley–Tukey traversal order](/images/cttree.jpg)
 
 The key observation presented in the FFTW paper [^fftw] is that the **depth-first** traversal is more cache-efficient, since it tends to work on a small subset of the entire data.
 The authors also note that the optimal factorization of $$N$$ depends on hardware details such as cache capacity and latency, and thus should be determined through **auto-tuning**.
