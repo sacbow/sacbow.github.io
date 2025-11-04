@@ -1,7 +1,7 @@
 ---
 title: "Destabilization of spin-Peierls phase via a charge-spin modulated Floquet state induced by intramolecular vibrational excitation"
 collection: publications
-category: journal
+category: manuscripts
 permalink: /publication/2024-commphys
 date: 2024-01-22
 venue: "Communications Physics"
