@@ -152,6 +152,8 @@ exclude:
   - markdown_generator/
   - talkmap/
   - talkmap.html
+  - README.md
+  - _pages/talks.html
 
 keep_files:
   - .git
