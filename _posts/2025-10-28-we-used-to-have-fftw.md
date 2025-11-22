@@ -1,6 +1,6 @@
 ---
 title: "We used to have fftw..."
-excerpt: "A pragmatic introduction to Fast Fourier Transform."
+excerpt: "A pragmatic introduction to Fast Fourier Transform (FFT) in Python, with a focus on optimization techniques."
 date: 2025-10-28
 collection: posts
 permalink: /blog/we-used-to-have-fft
