@@ -149,6 +149,10 @@ exclude:
   - README
   - tmp
   - vendor
+  - markdown_generator/
+  - talkmap/
+  - talkmap.html
+
 keep_files:
   - .git
   - .svn
