@@ -22,7 +22,7 @@ My research interests include:
   $$x \sim \rho(x), \quad y = G(x), \quad Y \sim l(Y ; y)$$
 
   Then we apply the Bayes' theorem $$p(x|Y) \propto \rho(x) l(Y; G(x))$$ to infer $$x$$ from the data $$Y$$.
-  Through this formulation, the prior knowledge about $$x$$, the physical mapping, and the model of observation noise is made explicit.
+  Through this formulation, the prior knowledge about $$x$$, the physical mapping, and the model of observation noise are made explicit.
   Moreover, the distribution $$p(x|Y)$$ provides not only the point estimate of $$x$$, but also the uncertainty quantification of the reconstruction.
 
 - **(Embedded) Domain Specific Languages**
