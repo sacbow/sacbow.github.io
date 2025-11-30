@@ -240,16 +240,44 @@ To make this work, we also have to have a mechanism to connect variable nodes wi
 But, this is not very interesting and I omit this detail. (In ForneyLab.jl, they are using Julia's powerful macro to construct factor graphs from DSL syntax written by its users.)
 
 ### Multiple dispatch
-The strategy for enhancing the expressivity of a message passing library is crystal clear: implement as many Factor subclasses as many as possible.
+The strategy for enhancing the expressivity of a message passing library is crystal clear: implement as many Factor subclasses as necessary.
+
 At the same time, because there are multiple variants of the sum–product algorithm, libraries such as ForneyLab and Infer.NET support several inference schemes, including Expectation Propagation, Variational Message Passing, and naive mean-field variational Bayes. This implies that each Factor subclass must implement multiple update rules, one for each inference algorithm.
 
-Furthermore, if a library allows messages to be represented in different families—such as Gaussian, Gamma, Beta, categorical, or even particle-based messages—then the number of update rules per factor type increases even more. 
+Furthermore, if a library allows messages to be represented in different families—such as Gaussian, Gamma, Beta, categorical, or even particle-based messages—then the number of update rules per factor type increases even more.
 
 ![Dispatch Table of update rules](/images/dispatch_table.jpg)
 
+(In my opinion, this is a fundamental limitation on the scalability of message passing libraries.)
+
+What makes things even more complicated is that such a system must also include
+a mechanism that selects the correct update rule based on the graphical model
+specified by the user.
+You definitely do not want to write something like: "if ... elif ... elif ... elif ... elif ... elif ...".
+In such situations, multiple dispatch in multimethod languages (such as Julia) is extremely helpful.
+A typical example is ForneyLab.jl. For instance, in [ForneyLab/src/update_rules/addition.jl](https://github.com/biaslab/ForneyLab.jl/blob/master/src/update_rules/addition.jl), all combination of the message types and applicable update rule for the addition factor ($$f(x,y,z) = \delta(z - (x + y))$$) are defined in a clean mannar.
+In contrast, my project [gPIE](https://github.com/sacbow/gpie) is focused on Gaussian messages to avoid this complexity.
 
 
+## 3. Technical considerations and remaining challenges
+This section highlights several technical challenges that arise when these algorithms are used in real-world applications.
 
+### Numerical issues
+Algorithms such as Expectation Propagation are very powerful in many applications, but they lack general convergence guarantees, and notoriously sensitive to numerical instability.
+A common heuristics to ensure convergence is to introduce damping-parameter and non-parallel scheduling, but choosing appropriate configuration before running EP is difficult.
+Adaptive-tuning of those parameters and schedules is an important aspect of message passing libraries.
+
+### Parallelism
+Sum-product algorithm can benefit enormously from parallel computation. However, the scheduling—the order in which messages are updated—have an impact on the numerical stability of the iterative algorithm. A practical tension arises:
+- Sequential (Gauss–Seidel–type) schedules
+    often converge more robustly, but are inherently serial and slow.
+- Parallel (Jacobi–type) schedules
+    leverage modern hardware such as multi-core CPUs or GPUs, but tend to be far less stable for EP and loopy BP.
+Finding schedules that strike a good balance—or adaptive schedules that switch strategies at runtime—is the current direction *gPIE*.
+
+### Interoperability with modern computational frameworks
+Another practical issue is the relative isolation of message passing libraries from high-performance computational graph frameworks such as PyTorch, TensorFlow, and JAX.
+To mitigate this gap, gPIE adopts NumPy/CuPy as dual backends, enabling transparent switching between CPU and GPU execution.
 
 
 ---
