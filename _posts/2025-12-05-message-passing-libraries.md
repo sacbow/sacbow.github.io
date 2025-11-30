@@ -270,9 +270,9 @@ Adaptive-tuning of those parameters and schedules is an important aspect of mess
 ### Parallelism
 Sum-product algorithm can benefit enormously from parallel computation. However, the scheduling—the order in which messages are updated—have an impact on the numerical stability of the iterative algorithm. A practical tension arises:
 
-- Sequential (Gauss–Seidel–type) schedules
+- **Sequential (Gauss–Seidel–type) schedules**
     often converge more robustly, but are inherently serial and slow.
-- Parallel (Jacobi–type) schedules
+- **Parallel (Jacobi–type) schedules**
     leverage modern hardware such as multi-core CPUs or GPUs, but tend to be far less stable for EP and loopy BP.
 
 Finding schedules that strike a good balance—or adaptive schedules that switch strategies at runtime—is the current direction *gPIE*.
@@ -282,7 +282,6 @@ Another practical issue is the relative isolation of message passing libraries f
 To mitigate this gap, gPIE adopts NumPy/CuPy as dual backends, enabling transparent switching between CPU and GPU execution.
 
 
----
 ## References
 [^minka2001]: T. P. Minka,  (2001).  
 *Expectation Propagation for Approximate Bayesian Inference.*  
