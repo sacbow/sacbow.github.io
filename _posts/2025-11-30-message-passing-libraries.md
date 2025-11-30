@@ -1,7 +1,7 @@
 ---
 title: "Implementing Message Passing Algorithms"
 excerpt: "An overview on message passing algorithms and their software abstractions in graph-based probabilistic programming libraries."
-date: 2025-12-05
+date: 2025-11-30
 collection: posts
 permalink: /blog/message-passing-libraries
 read_time: true
@@ -96,7 +96,7 @@ For in-depth review on these topics, please refer to *Pattern Recognition and Ma
 
 ## 2. Software abstraction
 The sum–product algorithm has a structure that lends itself naturally to object-oriented programming (OOP): one may define a variable class and a factor class, where the former performs the product update and the latter performs the sum update.
-This section examines how such an abstraction can be realized in practice, with examples from ForneyLab.jl[^forneylab2019] and my ongoing progect [gPIE](https://github.com/sacbow/gpie).
+This section examines how such an abstraction can be realized in practice, with examples from ForneyLab.jl[^forneylab2019] and my ongoing project [gPIE](https://github.com/sacbow/gpie).
 
 ### The base classes
 Let us consider the minimal design of the variable class and the factor class. What sort of data and operations should these objects have?
@@ -154,7 +154,7 @@ In sum-product algorithm, we frequently compute the product and the division of 
 
 A clear problem with this code is that, in **__truediv__**, *product_variance* may have a negative value.
 This is a well-known numerical issue in implementing Expectation Propagation, discussed for example in [the presentation in NIPS workshop by Winn](https://videolectures.net/videos/abi07_winn_ipi).
-A common practice is to clip the precision (the inverse of the variance) to a small positive value to avoid improper Gaussian.(As you can clearly see, holding precision instead of variance is a better way of impelementing EP.)
+A common practice is to clip the precision (the inverse of the variance) to a small positive value to avoid improper Gaussian.(As you can clearly see, holding precision instead of variance is a better way of implementing EP.)
 
 With this preparation, we can implement the update rule in *Variable* object.
 First, we require *Variable* class to hold messages from associated factors :
@@ -187,7 +187,7 @@ The method for computing the message sent from this variable to its associated f
 ```
 
 Here, the product of all incoming messages $$b(x) \propto \prod_{f \in \mathcal{V}_X} M_{f \rightarrow X}(x)$$ is precomputed, and sends new message $$M_{X \rightarrow f}(x) \propto b(x) / M_{f \rightarrow X}(x)$$.
-The *Factor.receieve_message* method accepts messages from variable objects that the factor is connected to:
+The *Factor.receive_message* method accepts messages from variable objects that the factor is connected to:
 
 ```python
     class Factor:
@@ -255,7 +255,7 @@ a mechanism that selects the correct update rule based on the graphical model
 specified by the user.
 You definitely do not want to write something like: "if ... elif ... elif ... elif ... elif ... elif ...".
 In such situations, multiple dispatch in multimethod languages (such as Julia) is extremely helpful.
-A typical example is ForneyLab.jl. For instance, in [ForneyLab/src/update_rules/addition.jl](https://github.com/biaslab/ForneyLab.jl/blob/master/src/update_rules/addition.jl), all combination of the message types and applicable update rule for the addition factor ($$f(x,y,z) = \delta(z - (x + y))$$) are defined in a clean mannar.
+A typical example is ForneyLab.jl. For instance, in [ForneyLab/src/update_rules/addition.jl](https://github.com/biaslab/ForneyLab.jl/blob/master/src/update_rules/addition.jl), all combination of the message types and applicable update rule for the addition factor ($$f(x,y,z) = \delta(z - (x + y))$$) are defined in a clean manner.
 In contrast, my project [gPIE](https://github.com/sacbow/gpie) is focused on Gaussian messages to avoid this complexity.
 
 
@@ -263,12 +263,12 @@ In contrast, my project [gPIE](https://github.com/sacbow/gpie) is focused on Gau
 This section highlights several technical challenges that arise when these algorithms are used in real-world applications.
 
 ### Numerical issues
-Algorithms such as Expectation Propagation are very powerful in many applications, but they lack general convergence guarantees, and notoriously sensitive to numerical instability.
+Algorithms such as Expectation Propagation are very powerful in many applications, but they lack general convergence guarantees, and are notoriously sensitive to numerical instability.
 A common heuristics to ensure convergence is to introduce damping-parameter and non-parallel scheduling, but choosing appropriate configuration before running EP is difficult.
 Adaptive-tuning of those parameters and schedules is an important aspect of message passing libraries.
 
 ### Parallelism
-Sum-product algorithm can benefit enormously from parallel computation. However, the scheduling—the order in which messages are updated—have an impact on the numerical stability of the iterative algorithm. A practical tension arises:
+Sum-product algorithm can benefit enormously from parallel computation. However, the scheduling—the order in which messages are updated—has an impact on the numerical stability of the iterative algorithm. A practical tension arises:
 
 - **Sequential (Gauss–Seidel–type) schedules**
     often converge more robustly, but are inherently serial and slow.
@@ -280,6 +280,7 @@ Finding schedules that strike a good balance—or adaptive schedules that switch
 ### Interoperability with modern computational frameworks
 Another practical issue is the relative isolation of message passing libraries from high-performance computational graph frameworks such as PyTorch, TensorFlow, and JAX.
 To mitigate this gap, gPIE adopts NumPy/CuPy as dual backends, enabling transparent switching between CPU and GPU execution.
+
 
 
 ## References
