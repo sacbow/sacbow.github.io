@@ -186,7 +186,7 @@ The method for computing the message sent from this variable to its associated f
                 factor.receive_message(self, outgoing)
 ```
 
-Here, the product of all incoming messages $$b(x) \prod_{f \in \mathcal{V}_X} M_{f \rightarrow X}(x)$$ is precomputed, and sends new message $$M_{X \rightarrow f}(x) \prod b(x) / M_{f \rightarrow X}(x)$$.
+Here, the product of all incoming messages $$b(x) \propto \prod_{f \in \mathcal{V}_X} M_{f \rightarrow X}(x)$$ is precomputed, and sends new message $$M_{X \rightarrow f}(x) \propto b(x) / M_{f \rightarrow X}(x)$$.
 The *Factor.receieve_message* method accepts messages from variable objects that the factor is connected to:
 
 ```python
@@ -215,7 +215,7 @@ Similarly, the *Variable* class should have *Variable.receive_message* method.
 
 ```
 
-To support various factor nodes (such as $$f(x,y) = exp(-\frac{(x-y)^2}{2\sigma^2})$$ and  $$f(x,y,z) = \delta(z - xy)$$), message passing libraries typically have a lot of subclasses of *Factor* class. For example, if you look at ForneyLab.jl, [ForneyLab/src/factor_nodes](https://github.com/biaslab/ForneyLab.jl/tree/master/src/factor_nodes) directory contains about 30 types of factor. The update rules in *Factor* objects are different between those subclasses.
+To support various factor nodes (such as $$f(x,y) = \exp(-\frac{(x-y)^2}{2\sigma^2})$$ and  $$f(x,y,z) = \delta(z - xy)$$), message passing libraries typically have a lot of subclasses of *Factor* class. For example, if you look at ForneyLab.jl, [ForneyLab/src/factor_nodes](https://github.com/biaslab/ForneyLab.jl/tree/master/src/factor_nodes) directory contains about 30 types of factors. The update rules in *Factor* objects are different between those subclasses.
 
 Lastly, we should define the *Graph* class. It contains all of the *Variable* and *Factor* objects, and call their *update_messages* methods.
 
@@ -269,10 +269,12 @@ Adaptive-tuning of those parameters and schedules is an important aspect of mess
 
 ### Parallelism
 Sum-product algorithm can benefit enormously from parallel computation. However, the scheduling—the order in which messages are updated—have an impact on the numerical stability of the iterative algorithm. A practical tension arises:
+
 - Sequential (Gauss–Seidel–type) schedules
     often converge more robustly, but are inherently serial and slow.
 - Parallel (Jacobi–type) schedules
     leverage modern hardware such as multi-core CPUs or GPUs, but tend to be far less stable for EP and loopy BP.
+
 Finding schedules that strike a good balance—or adaptive schedules that switch strategies at runtime—is the current direction *gPIE*.
 
 ### Interoperability with modern computational frameworks
