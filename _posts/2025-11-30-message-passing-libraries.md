@@ -140,7 +140,7 @@ In sum-product algorithm, we frequently compute the product and the division of 
             Usage: Gaussian_prod = Gaussian_l * Gaussian_r
             """
             product_variance = 1/(1/self.variance + 1/other.variance)
-            product_mean = (self.mean/self.variance + other.mean/other.variance) / product_variance
+            product_mean = (self.mean/self.variance + other.mean/other.variance) * product_variance
             return Gaussian(mean = product_mean, variance = product_variance)
 
         def __truediv__(self: Gaussian, other: Gaussian):
@@ -148,7 +148,7 @@ In sum-product algorithm, we frequently compute the product and the division of 
             Usage: Gaussian_div = Gaussian_l / Gaussian_r
             """
             division_variance = 1/(1/self.variance - 1/other.variance)
-            division_mean = (self.mean/self.variance - other.mean/other.variance) / division_variance
+            division_mean = (self.mean/self.variance - other.mean/other.variance) * division_variance
             return Gaussian(mean = division_mean, variance = division_variance)
 ```
 
