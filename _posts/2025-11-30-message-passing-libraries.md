@@ -147,12 +147,12 @@ In sum-product algorithm, we frequently compute the product and the division of 
             """
             Usage: Gaussian_div = Gaussian_l / Gaussian_r
             """
-            product_variance = 1/(1/self.variance - 1/other.variance)
-            product_mean = (self.mean/self.variance - other.mean/other.variance) / product_variance
+            division_variance = 1/(1/self.variance - 1/other.variance)
+            division_mean = (self.mean/self.variance - other.mean/other.variance) / product_variance
             return Gaussian(mean = product_mean, variance = product_variance)
 ```
 
-A clear problem with this code is that, in **__truediv__**, *product_variance* may have a negative value.
+A clear problem with this code is that, in **__truediv__**, *division_variance* may have a negative value.
 This is a well-known numerical issue in implementing Expectation Propagation, discussed for example in [the presentation in NIPS workshop by Winn](https://videolectures.net/videos/abi07_winn_ipi).
 A common practice is to clip the precision (the inverse of the variance) to a small positive value to avoid improper Gaussian.(As you can clearly see, holding precision instead of variance is a better way of implementing EP.)
 
