@@ -9,12 +9,12 @@ author_profile: true
 tags: [Message Passing, Belief Propagation, Variational Bayes, Probabilistic Programming Languages]
 ---
 
-Probabilistic Programming Languages (PPLs) automate inference on probabilistic models defined in a high-level syntax by its users.
+Probabilistic Programming Languages (PPLs) automate inference on probabilistic models defined by its users.
 Implementing such a software framework sounds pretty daunting, because no algorithm is universally applicable or scalable to arbitrary inference tasks.
 General purpose PPLs, such as [Turing.jl](https://turinglang.org/) and [Numpyro](https://num.pyro.ai/en/stable/), support multiple methods including MCMC and variational inference, to cover a wide range of problems.
 
 This article, however, focuses on the message passing libraries, such as [Infer.NET](https://dotnet.github.io/infer/) and [ForneyLab.jl](https://biaslab.github.io/project/forneylab/).
-Although the space of problems that these libraries can handle is much narrower than PPLs, they support scalable inference for high-dimensional models commonly found in time-series analysis and computational imaging.
+Although the space of problems that these libraries can handle is much smaller than PPLs, they support scalable inference for high-dimensional models commonly found in time-series analysis and computational imaging.
 
 ## 1. Basics
 This section overviews the sum-product algorithm and its variants.
@@ -81,7 +81,7 @@ M_{X \rightarrow f} (x) \propto \prod_{f' \in \mathcal{F}_X - \{f\}} M_{f' \righ
 $$
 
 $$
-M_{f \rightarrow X} (x) \propto  f(X_f) \prod_{X' \in \mathcal{V}_f - \{X\}} M_{X' \rightarrow f} (x')
+M_{f \rightarrow X} (x) \propto \int f(X_f) \prod_{X' \in \mathcal{V}_f - \{X\}} M_{X' \rightarrow f} (x') dx'
 $$
 
 where $$\mathcal{F}_X$$ and $$\mathcal{V}_f$$ denote factor nodes associated with $$X \in \mathcal{V}$$ and variable nodes associated with $$f \in \mathcal{F}$$.
