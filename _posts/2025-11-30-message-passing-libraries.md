@@ -149,7 +149,7 @@ In sum-product algorithm, we frequently compute the product and the division of 
             """
             division_variance = 1/(1/self.variance - 1/other.variance)
             division_mean = (self.mean/self.variance - other.mean/other.variance) / division_variance
-            return Gaussian(mean = product_mean, variance = product_variance)
+            return Gaussian(mean = division_mean, variance = division_variance)
 ```
 
 A clear problem with this code is that, in **__truediv__**, *division_variance* may have a negative value.
