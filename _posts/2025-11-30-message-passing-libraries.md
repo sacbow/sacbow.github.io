@@ -186,7 +186,7 @@ The method for computing the message sent from this variable to its associated f
                 factor.receive_message(self, outgoing)
 ```
 
-Here, the product of all incoming messages $$b(x) \propto \prod_{f \in \mathcal{V}_X} M_{f \rightarrow X}(x)$$ is precomputed, and sends new message $$M_{X \rightarrow f}(x) \propto b(x) / M_{f \rightarrow X}(x)$$.
+Here, the product of all incoming messages $$b(x) \propto \prod_{f \in \mathcal{F}_X} M_{f \rightarrow X}(x)$$ is precomputed, and sends new message $$M_{X \rightarrow f}(x) \propto b(x) / M_{f \rightarrow X}(x)$$.
 The *Factor.receive_message* method accepts messages from variable objects that the factor is connected to:
 
 ```python
