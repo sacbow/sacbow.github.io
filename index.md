@@ -3,8 +3,28 @@ layout: single
 author_profile: true
 title: "Hajime Ueda (上田 朔 / UEDA Hajime)"
 sidebar:
-  nav: "sidebar"
+nav: "sidebar"
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hajime Ueda",
+  "alternateName": "上田 朔",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "The University of Tokyo"
+  },
+  "jobTitle": "PhD Candidate",
+  "url": "https://sacbow.github.io",
+  "sameAs": [
+    "https://github.com/sacbow",
+    "https://www.linkedin.com/in/hajime-ueda-2b9044382"
+  ]
+}
+</script>
+
+
 
 I'm Hajime Ueda, a PhD candidate at the University of Tokyo under the supervision of [prof. Masato Okada](https://mns.k.u-tokyo.ac.jp/home.html).
 
