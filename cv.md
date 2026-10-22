@@ -31,6 +31,16 @@ Adaptive Bayesian Intelligence Team
 - **B.Eng. in Applied Physics**, The University of Tokyo (Apr. 2018 – Mar. 2022)  
   Department of Applied Physics, School of Engineering
 
+
+---
+
+## 🎤 Invited Talks
+
+- **A Compilation Approach to Bayesian Inference in Imaging Sciences**  
+  Workshop on Mathematical Foundations and Interdisciplinary Collaboration in Measurement Informatics, Kyushu University, Japan, Oct. 9, 2026.  
+  Delivered in Japanese. [Event](https://joint.imi.kyushu-u.ac.jp/post-21082/) · [Video (Japanese)](https://youtu.be/pzugC4Po3nA)
+
+
 ---
 
 ## 🧰 Technical Skills
